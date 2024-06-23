@@ -1,0 +1,9 @@
+name: short-lived Rust cache
+description: Sets up a short-lived Rust cache (only valid for runs on this specific commit)
+
+runs:
+  using: composite
+  steps:
+    - uses: Swatinem/rust-cache@23bce251a8cd2ffc3c1075eaa2367cf899916d84 # v2.7.3
+      with:
+        shared-key: cargo-${{ github.workflow }}-${{ runner.os }}-${{ github.sha }}
